@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Piedra Gorda sample offers</title>
+    <link>https://darildev.github.io/piedra-gorda/en/news.html</link>
+    <description>Sample promotions for the Casa Rural Piedra Gorda demo.</description>
+    <language>en</language>
+    <item>
+      <title>Sample offer for longer stays</title>
+      <link>https://darildev.github.io/piedra-gorda/en/stay.html</link>
+      <guid isPermaLink="false">piedra-gorda-demo-en-sample-offer</guid>
+      <description>This is an example entry for the booking demo.</description>
+    </item>
+  </channel>
+</rss>

@@ -7,7 +7,10 @@ const islandDate = new Intl.DateTimeFormat("sv-SE", {
   month: "2-digit",
   day: "2-digit",
 });
-const displayDate = new Intl.DateTimeFormat("es-ES", { dateStyle: "long", timeZone: "UTC" });
+const text = document.documentElement.lang === "en"
+  ? { locale: "en-GB", night: "night", nights: "nights", guest: "guest", guests: "guests", photoSeparator: "of" }
+  : { locale: "es-ES", night: "noche", nights: "noches", guest: "huésped", guests: "huéspedes", photoSeparator: "de" };
+const displayDate = new Intl.DateTimeFormat(text.locale, { dateStyle: "long", timeZone: "UTC" });
 
 function nextDay(date) {
   return new Date(Date.parse(date) + dayInMilliseconds).toISOString().slice(0, 10);
@@ -18,6 +21,7 @@ function populateStayForm(form) {
   const departure = form.elements.salida;
   const guests = form.elements.personas;
   const result = document.querySelector("[data-reservation-result]");
+  const languageLink = document.querySelector("[data-stay-language]");
   const isReservationPage = form.hasAttribute("data-reservation");
   const today = islandDate.format(new Date());
 
@@ -28,6 +32,12 @@ function populateStayForm(form) {
   function updateConstraints() {
     departure.min = nextDay(arrival.value && arrival.validity.valid ? arrival.value : today);
     if (result) result.hidden = true;
+
+    if (languageLink) {
+      const alternate = new URL(languageLink.href);
+      alternate.search = new URLSearchParams(new FormData(form));
+      languageLink.href = alternate.href;
+    }
   }
 
   if (isReservationPage) {
@@ -57,8 +67,8 @@ function populateStayForm(form) {
 
     result.querySelector("[data-arrival]").textContent = displayDate.format(arrival.valueAsDate);
     result.querySelector("[data-departure]").textContent = displayDate.format(departure.valueAsDate);
-    result.querySelector("[data-nights]").textContent = nights === 1 ? "1 noche" : `${nights} noches`;
-    result.querySelector("[data-guests]").textContent = guestCount === 1 ? "1 huésped" : `${guestCount} huéspedes`;
+    result.querySelector("[data-nights]").textContent = `${nights} ${nights === 1 ? text.night : text.nights}`;
+    result.querySelector("[data-guests]").textContent = `${guestCount} ${guestCount === 1 ? text.guest : text.guests}`;
     result.hidden = false;
     result.querySelector("h3").focus();
   });
@@ -78,7 +88,7 @@ function enableGallery(dialog, links) {
     title.textContent = link.querySelector("span").textContent;
     photo.alt = link.querySelector("img").alt;
     photo.src = link.href;
-    position.textContent = `${currentIndex + 1} de ${links.length}`;
+    position.textContent = `${currentIndex + 1} ${text.photoSeparator} ${links.length}`;
   }
 
   for (const [index, link] of links.entries()) {

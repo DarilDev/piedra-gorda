@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Piedra Gorda demo news</title>
+    <link>https://darildev.github.io/piedra-gorda/en/news.html</link>
+    <description>Updates from the Casa Rural Piedra Gorda demo.</description>
+    <language>en</language>
+    <item>
+      <title>Explore the Piedra Gorda photo gallery</title>
+      <link>https://darildev.github.io/piedra-gorda/en/#galeria</link>
+      <guid isPermaLink="false">piedra-gorda-demo-en-gallery</guid>
+      <description>Take a look inside the house and see the views from the sun terrace.</description>
+    </item>
+  </channel>
+</rss>
