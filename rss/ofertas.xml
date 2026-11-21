@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Ofertas de ejemplo de Piedra Gorda</title>
+    <link>https://darildev.github.io/piedra-gorda/paginas/rss.html</link>
+    <description>Canal de demostración sin ofertas comerciales vigentes.</description>
+    <language>es</language>
+    <item>
+      <title>Ejemplo de oferta para estancias largas</title>
+      <link>https://darildev.github.io/piedra-gorda/paginas/reservas.html</link>
+      <guid isPermaLink="false">piedra-gorda-demo-oferta-ejemplo</guid>
+      <description>Entrada ilustrativa. La consulta de estancias es una simulación.</description>
+    </item>
+  </channel>
+</rss>
